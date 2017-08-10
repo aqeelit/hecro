@@ -13,4 +13,10 @@ class Job extends Model
      {
      	return $this->belongTo('App\Company','id');
      }
+
+
+     public function cities()
+     {
+     	return $this->belongTo('App\City','id');
+     }
 }

@@ -4,10 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Profile extends Model
 {
     
     protected $fillable = [
+    
+    'user_id',
     'objective',
     'salary',
     'employment_type',
@@ -78,10 +81,8 @@ class Profile extends Model
 
     public function users()
     {
-    	return $this->belongTo('App\Profile','user_id');
+    	return $this->belongTo('App\User','id');
     }
-
-
 
 
 }

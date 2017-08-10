@@ -13,5 +13,10 @@ class city extends Model
     	return $this->belongsToMany('App\Company','city_company');
     }
 
+    public function jobs()
+    {
+    	return $this->hasMany('App\Job','city_id');
+    }
+
     
 }

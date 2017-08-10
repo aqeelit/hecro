@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+Route::resource('company','companyController');
+
+Route::get('/profile/index/{id}','profileController@index');
+
+Route::post('/profile/{id}','profileController@store');
