@@ -15,7 +15,7 @@ class jobController extends Controller
      */
     public function index()
     {
-        //
+        echo "hello";
     }
 
     /**

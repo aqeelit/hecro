@@ -6,7 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
-    protected $fillable = ['title','category','website','email','phone','description','logo'];
+    protected $fillable = ['user_id','title','category','website','email','phone','description','logo'];
+
+    public static $create_rules = [
+
+          'title'=> 'required',
+          'category' => 'required',
+          'website'=> 'required',
+          'email'=> 'required|email',
+          'phone' => 'required',
+          'description' => 'required',
+
+
+    ];
 
     public function jobs()
     {
@@ -21,6 +33,6 @@ class Company extends Model
 
     public function users()
     {
-    	return $this->belongsToMany('App\User','user_company');
+    	return $this->belongsTo('App\User','id');
     }
 }

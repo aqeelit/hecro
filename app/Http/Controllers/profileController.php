@@ -71,17 +71,7 @@ class profileController extends Controller
     public function store(Request $request , $id )
     {
 
-        $this->Validate($request,[
-              'objective' => 'required' ,
-              'salary'=> 'required',
-              'employment_type'=> 'required',
-              'first_name'=> 'required',
-              'last_name'=> 'required',
-              'contact_email'=> 'required|email',
-              'birth'=> 'required',
-              'sex'=> 'required',
-              'phone'=> 'required',
-           ]);
+        $this->Validate($request,Profile::$validation_rules);
 
         $pro = $request->only('objective','salary','employment_type','first_name','last_name',
                              'contact_email','birth','sex','phone');
@@ -119,7 +109,9 @@ class profileController extends Controller
      */
     public function edit($id)
     {
-        //
+        $profiles = Profile::where('user_id',$id)->get();
+
+        return view('profile.edit', compact('profiles'));
     }
 
     /**
@@ -131,7 +123,24 @@ class profileController extends Controller
      */
     public function update(Request $request, $id)
     {
-      //
+        
+
+        $this->Validate($request, Profile::$update_validation_rules);
+
+        $data = $request->only('objective','salary','employment_type','first_name','last_name',
+                             'contact_email','birth','sex','phone');
+
+        $update = Profile::where('user_id', $id)->update($data);
+
+        $profiles = Profile::where('user_id', $id)->get();
+
+        if ($update) {
+             return view('profile.index', compact('profiles'));
+         }else{
+             return back()->withInput();
+         } 
+
+
     }
 
     /**

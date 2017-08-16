@@ -77,7 +77,36 @@ class Profile extends Model
 
 
     ];
+
+
+
+    public static $validation_rules = [
+
+              'objective' => 'required' ,
+              'salary'=> 'required',
+              'employment_type'=> 'required',
+              'first_name'=> 'required',
+              'last_name'=> 'required',
+              'contact_email'=> 'required|email',
+              'birth'=> 'required',
+              'sex'=> 'required',
+              'phone'=> 'required|min:7',
+           ];
  
+
+
+    public static $update_validation_rules = [
+
+              'objective' => 'required' ,
+              'salary'=> 'required',
+              'employment_type'=> 'required',
+              'first_name'=> 'required',
+              'last_name'=> 'required',
+              'contact_email'=> 'required|email',
+              'birth'=> 'required',
+              'sex'=> 'required',
+              'phone'=> 'required|min:7',
+           ];
 
     public function users()
     {

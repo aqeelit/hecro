@@ -62,6 +62,9 @@
                    </div>
                     <div class="col-sm-4">
                        <label for='text' >Sex :</label><h4>{{ $profile->sex }}</h4>
+
+                       <a href="/profile/{{$profile->user_id}}/edit" class="btn btn-info" role="button" >Edit the Content</a>
+
                 @endforeach
 
 

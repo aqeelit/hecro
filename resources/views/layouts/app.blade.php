@@ -48,7 +48,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li><a class="btn btn-link" href="{{ url('/company') }}">Add Job</a></li>
+                    <li><a class="btn btn-link" href="{{ url('/job') }}">Add Job</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -64,7 +64,8 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/profile/index/'. Auth::user()->id )}}"><i class="fa fa-btn fa-register"></i>My Profile</a></li>
+                                <li><a href="{{ url('/profile/'.Auth::user()->id.'/index')}}"><i class="fa fa-btn fa-user"></i>My Profile</a></li>
+                                <li><a href="{{ url('/company/'.Auth::user()->id.'/index')}}"><i class="fa fa-btn fa-user"></i>My Company</a></li>
                                 <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                             </ul>
                         </li>

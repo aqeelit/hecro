@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Validator ;
+
+use App\User;
+
+use App\Company;
+
 class companyController extends Controller
 {
     /**
@@ -13,9 +19,20 @@ class companyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        //
+        $companies = Company::where('user_id',$id)->get();
+
+        if(!$companies->isEmpty()){
+
+            return view('company.index', compact('companies'));
+        }else{
+
+            $user_id = Company::create(array('user_id' => $id));
+
+            return view('company.create', compact('id'));
+        }
+        
     }
 
     /**
@@ -34,9 +51,55 @@ class companyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request , $id)
     {
-        //
+
+        $this->Validate($request, Company::$create_rules);
+
+        
+    //     if( $request->hasFile('logo'))
+    // { 
+    //     $img = $request->file('logo'); 
+    //     $extension = $img->getClientOriginalExtension(); 
+    //     dd($extension); 
+    // } else {
+    //     dd('No image was found');
+    // }
+
+
+         $logo = $request->file('logo')->getClientOriginalName();
+
+         $request->file('logo')->move(public_path() .'/images/companies', $logo);
+         
+         
+            $req = new Company ;
+
+            $req = array(
+
+            'title' => $request->get('title') ,
+            'category' =>  $request->get('category'),
+            'website' => $request->get('website') ,
+            'email'=> $request->get('email') ,
+            'phone' => $request->get('phone') ,
+            'description' => $request->get('description') ,
+            'logo' => $logo
+            );  
+
+            
+
+        $company = Company::where('user_id',$id)->update($req);
+
+        
+
+        $companies = Company::where('user_id',$id)->get();
+
+
+        if (!$companies->isEmpty()) {
+            
+            return view('company.index',compact('companies'));
+        }else{
+            return back()->withData();
+        }
     }
 
     /**
@@ -58,7 +121,9 @@ class companyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $companies = Company::where('user_id',$id)->get();
+
+        return view('company.edit', compact('companies'));
     }
 
     /**
@@ -70,7 +135,47 @@ class companyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->Validate($request , Company::$create_rules);
+
+        $company = Company::where('user_id',$id)->first();
+
+        if ($request->hasFile('logo')) {
+            
+            $logo = $request->file('logo')->getClientOriginalName();
+
+            $request->file('logo')->move(public_path() .'/images/companies', $logo);
+
+        $com = new Company ;
+
+        $com = array(
+            'title' => $request->get('title') ,
+            'category' =>  $request->get('category'),
+            'website' => $request->get('website') ,
+            'email'=> $request->get('email') ,
+            'phone' => $request->get('phone') ,
+            'description' => $request->get('description') ,
+            'logo' => $logo
+
+            );
+
+        $company = Company::where('user_id',$id)->update($com);
+
+        $companies = Company::where('user_id',$id)->get();
+
+        return view('company.index', compact('companies'));
+
+         }else{
+
+         $data = $request->only('title','category','website','email','phone',
+                             'description');
+          
+        $company = Company::where('user_id',$id)->update($data);
+
+        $companies = Company::where('user_id',$id)->get();
+
+        return view('company.index', compact('companies'));
+
+         }
     }
 
     /**
