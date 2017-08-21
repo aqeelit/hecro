@@ -48,8 +48,11 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li><a class="btn btn-link" href="{{ url('/job') }}">Add Job</a></li>
+                @if (Auth::user())
+                    <li><a class="btn btn-link" href="{{ url('/job/'.Auth::id().'/index')}}">Add Job</a></li>
+                @endif
                 </ul>
+                
 
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">

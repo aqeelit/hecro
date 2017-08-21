@@ -54,18 +54,10 @@ class companyController extends Controller
     public function store(Request $request , $id)
     {
 
-        $this->Validate($request, Company::$create_rules);
+        $rules = $this->Validate($request , Company::$create_rules);
 
-        
-    //     if( $request->hasFile('logo'))
-    // { 
-    //     $img = $request->file('logo'); 
-    //     $extension = $img->getClientOriginalExtension(); 
-    //     dd($extension); 
-    // } else {
-    //     dd('No image was found');
-    // }
-
+        if (!$rules) {
+            
 
          $logo = $request->file('logo')->getClientOriginalName();
 
@@ -88,7 +80,8 @@ class companyController extends Controller
             
 
         $company = Company::where('user_id',$id)->update($req);
-
+         
+        }
         
 
         $companies = Company::where('user_id',$id)->get();

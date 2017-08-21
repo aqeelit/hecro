@@ -8,6 +8,7 @@ class city extends Model
 {
 
 
+
     public function companies()
     {
     	return $this->belongsToMany('App\Company','city_company');

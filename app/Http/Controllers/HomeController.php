@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
+use App\Job ;
+
+use App\Company ;
+
 class HomeController extends Controller
 {
     /**
@@ -24,7 +28,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $jobs = Job::all();
+
+        $companies = Company::all();
+
+        return view('home', compact('jobs','companies'));
     }
 
     public function jober($id)

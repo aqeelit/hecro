@@ -22,7 +22,7 @@ class CreateJobsTable extends Migration
             $table->string('experience')->default('No matter');
             $table->string('employment_type')->default('No matter');
             $table->text('description')->nullable(); 
-            $table->integer('city_id');
+            $table->string('city');
             $table->timestamps();
 
             //Relation between two tables

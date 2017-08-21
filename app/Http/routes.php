@@ -19,8 +19,6 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::resource('job','jobController');
-
 
 //profile routes 
 
@@ -41,3 +39,15 @@ Route::post('/company/{id}','companyController@store');
 Route::get('/company/{id}/edit','companyController@edit');
 
 Route::put('/company/{id}/update','companyController@update');
+
+//job routes
+
+Route::get('/job/{id}/index','jobController@index');
+
+Route::post('/job/{id}','jobController@store');
+
+Route::get('/job/{id}/show','jobController@show');
+
+
+
+
