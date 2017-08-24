@@ -27,7 +27,7 @@ class jobController extends Controller
 
 
 
- public function index($id)
+    public function index($id)
     {
         $companies = Company::where('user_id',$id)->get();
           
@@ -42,11 +42,13 @@ class jobController extends Controller
 
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function create()
     {
         //
@@ -88,7 +90,7 @@ class jobController extends Controller
         
          $job = Job::find($job_id);
 
-        $companies = Company::where('id', $job->id)->get();
+        $companies = Company::where('id', $job->company_id)->get();
 
        
         if ($job_id) {
@@ -113,7 +115,9 @@ class jobController extends Controller
 
         $job = Job::find($id);
 
+
         $companies = Company::where('id',$job->company_id)->get();
+
         
         return view('job.show', compact('jobs','companies'));
     }
@@ -127,7 +131,10 @@ class jobController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jobs = Job::where('id',$id)->get();
+
+        return view('job.edit',compact('jobs'));
+
     }
 
     /**
@@ -139,7 +146,24 @@ class jobController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->Validate($request, Job::$create_job_rules);
+
+        $data = $request->only('position','salary','employment_type','category','experience',
+                             'city','description');
+
+        $job = Job::where('id', $id)->update($data);
+
+        $company_id = Job::findOrFail($id)->company_id;
+
+        $jobs = Job::findOrFail($id)->get();
+
+        $companies = Company::findOrFail($company_id)->get();
+
+        if ($job){
+            return view('job.show' , compact('jobs','companies'));
+        }else{
+           return back()->withData();
+        }
     }
 
     /**
@@ -150,6 +174,14 @@ class jobController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+
+        $jobs = Job::all();
+
+        $delete = Job::find($id)->delete();
+
+        if ($delete) {
+            return view('welcome');
+        }
     }
 }

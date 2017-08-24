@@ -30,11 +30,11 @@
                 
                 <div class="row">               
 
-                  <div class="col-sm-4"><label>Experience : </label></br> <input type="text" name="experience"></br></div>
+                <div class="col-sm-4"><label>Experience : </label></br> <input type="text" name="experience"></br></div>
 
-                   <div class="col-sm-4"><label>Employment Type : </label></br><input type="text" name="employment_type"></br></div>
+                <div class="col-sm-4"><label>Employment Type : </label></br><input type="text" name="employment_type"></br></div>
 
-                   <div class="col-sm-4"><label>City : </label></br><SELECT name="city" class="form-control"><option>Baghdad</option><option>Basra</option><option>Babil</option><option>Najaf</option></SELECT></br></div>
+                <div class="col-sm-4"><label>City : </label></br><SELECT name="city" class="form-control"><option>Baghdad</option><option>Basra</option><option>Babil</option><option>Najaf</option></SELECT></br></div>
               
                 
 

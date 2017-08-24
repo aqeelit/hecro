@@ -92,8 +92,13 @@
                     @if( Auth::id() == $company->user_id )
 
                     <div class="row">
-                       <div class="col-sm-6">
+                       <div class="col-sm-4">
                        <a href="/job/{{$job->id}}/edit" class="btn btn-info" role="button" >Edit the Content</a>
+                       </div>
+
+                    
+                       <div class="col-sm-4">
+                       <a href="/job/{{$job->id}}/destroy" class="btn btn-info" role="button" >Delete This Job</a>
                        </div>
                     </div>
 
@@ -101,7 +106,7 @@
 
                     <div class="row">
                        <div class="col-sm-6">
-                       <a href="" class="btn btn-info" role="button" >Apply Now</a>
+                       <a href="/job/{{Auth::id()}}/apply/{{$job->id}}" class="btn btn-info" role="button" >Apply Now</a>
                        </div>
                     </div>
 

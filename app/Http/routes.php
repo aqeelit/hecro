@@ -19,6 +19,8 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('getcity', 'HomeController@getCity');
+
 
 //profile routes 
 
@@ -47,6 +49,16 @@ Route::get('/job/{id}/index','jobController@index');
 Route::post('/job/{id}','jobController@store');
 
 Route::get('/job/{id}/show','jobController@show');
+
+Route::get('/job/{id}/edit','jobController@edit');
+
+Route::put('/job/{id}/update','jobController@update');
+
+Route::get('/job/{id}/destroy','jobController@destroy');
+
+//Apply Routes 
+
+Route::get('/job/{userId}/apply/{jobId}','applyController@setApply');
 
 
 

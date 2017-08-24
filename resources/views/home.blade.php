@@ -35,7 +35,8 @@
                     </div>
                    <div class="form-group">
                    <label for="text">City</label>
-                   <input type="text" class="form-control" id="city" placeholder="City" name="city">
+                   <input type="text" id="search" class="form-control" name="city">
+                   <div id="update"></div>
                    </div>
                    <button type="submit" class="btn btn-default">SEARCH</button>
                 </form>
@@ -52,21 +53,25 @@
              @foreach ($companies as $company)
              @foreach ( $jobs as $job )
 
-            <a href="/job/{{$job->id}}/show">
-             <ul>
-               <li>{{$company->title}}</li><br>
-               <li>{{$company->category}}</li><br>
-               <li>{{ $job->position }}</li><br>
-               <li>{{ $job->employment_type }}</li><br>
-               <li>{{ $job->salary }}</li><br>
-               <li>{{ $job->city }}</li><br><br><br>
-             </ul>
-            </a>
+             @if($company->id == $job->company_id)
+             <div class="col-sm-4">
+             <div class="well">
+             <a href="/job/{{$job->id}}/show">
+             <img src="{{ asset('images/companies/' . $company->logo) }}" class="img-responsive" style="width:100%" alt="Image"> </a>
+             <h4>{{$company->title}}</h3>
+             <h3>{{$job->position}}</h2>
+             <p>{{ $job->city }} | {{ $job->experience }}</p>
+            
+             </div>
+             </div>
+
+             @endif
              @endforeach
              @endforeach
 
            </div>
 
         </div>
+
 
 @endsection
