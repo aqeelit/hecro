@@ -104,11 +104,22 @@
 
                     @else
 
+                    <div id="field1" data-field1-id="{{Auth::id()}}" ></div>
+                    <div id="field2" data-field2-id="{{$job->id}}" ></div>
+
                     <div class="row">
                        <div class="col-sm-6">
-                       <a href="/job/{{Auth::id()}}/apply/{{$job->id}}" class="btn btn-info" role="button" >Apply Now</a>
+                       <button  onclick="getApply()" class="btn btn-info" role="button" >Appy Now</button>
+
+                       <!-- <a href="/job/{{Auth::id()}}/apply/{{$job->id}}" class="btn btn-info" role="button" >Apply Now</a> -->
+
+                       </div>
+
+                       <div class="col-sm-6">
+                          <div id="msg"> </div>
                        </div>
                     </div>
+
 
                     @endif
 

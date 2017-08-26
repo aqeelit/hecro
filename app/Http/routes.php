@@ -63,3 +63,7 @@ Route::get('/job/{userId}/apply/{jobId}','applyController@setApply');
 
 
 
+
+
+
+

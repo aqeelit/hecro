@@ -5,10 +5,11 @@
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Create a Job</div>
+        <div class="col-md-12">
+           <div class="page-header"><h1>Create a Job</h1></div>
+              <div class="well">
+                
+
 
                 @foreach($companies as $company)
                 
@@ -18,46 +19,81 @@
 
                  <input type="hidden" name="_token" value="{{ csrf_token() }}"></br>
 
-                <div class="row">
 
-                <div class="col-sm-4"><label>Position : </label></br> <input type="text" name="position"></br></div>
+    <div class="form-group"> <!-- Position -->
+        <label for="full_name_id" class="control-label">Position</label>
+        <input type="text" class="form-control" id="full_name_id" name="position" placeholder="PHP Developer">
+    </div>  
 
-                <div class="col-sm-4"><label>Category : </label></br><input type="text" name="category"></br></div>
+    <div class="form-group"> <!-- Street 1 -->
+        <label for="street1_id" class="control-label">Category</label>
+        <input type="text" class="form-control" id="street1_id" name="category" placeholder="IT Software">
+    </div>                  
+                            
+    <div class="form-group"> <!-- Street 2 -->
+        <label for="street2_id" class="control-label">Salary</label>
+        <input type="text" class="form-control" id="street2_id" name="salary" placeholder="2000">
+    </div>  
 
-                <div class="col-sm-4"><label>Salary : </label></br> <input type="number" name="salary"></br></div>
-                </div>
+    <div class="form-group"> <!-- Street 2 -->
+        <label for="street2_id" class="control-label">Experience</label>
+        <select class="form-control" id="state_id" name="experience">
+            <option>Entery Level</option>
+            <option>Middle Level</option>
+            <option>Senior </option>
+        </select>
+    </div>  
 
-                
-                <div class="row">               
-
-                <div class="col-sm-4"><label>Experience : </label></br> <input type="text" name="experience"></br></div>
-
-                <div class="col-sm-4"><label>Employment Type : </label></br><input type="text" name="employment_type"></br></div>
-
-                <div class="col-sm-4"><label>City : </label></br><SELECT name="city" class="form-control"><option>Baghdad</option><option>Basra</option><option>Babil</option><option>Najaf</option></SELECT></br></div>
-              
-                
-
-
-                <div class="row">
-                <div class="col-sm-6"><label>description : </label></br><textarea name="description" rows="8" cols="100" placeholder="Enter The Description Here ...."></textarea></br></div>
-                </div>
-
-
-                <div class="row">
-                   <div class="col-sm-6">
-                     <input type="submit" name="submit" value="Create a job">
-                   </div>
-                </div>
-                </form>
-
-                @endforeach
-
-              </div>
-        </div>
+    <div class="form-group"> <!-- Street 2 -->
+        <label for="street2_id" class="control-label">Employment Type</label>
+        <select class="form-control" id="state_id" name="employment_type">
+            <option>Full Time</option>
+            <option>Part Time</option>
+            <option>Contract</option>
+        </select>
+    </div>  
+                                
+                            
+    <div class="form-group"> <!-- City Button -->
+        <label for="state_id" class="control-label">City</label>
+        <select class="form-control" id="state_id" name="city">
+            <option>Baghdad</option>
+            <option>Al Anbar</option>
+            <option>Al-Qadisiyyah</option>
+            <option>Babil</option>
+            <option>Basra</option>
+            <option>Dahuk</option>
+            <option>Diyala</option>
+            <option>Dhi Qar</option>
+            <option>Erbil</option>
+            <option>Karbala</option>
+            <option>Kirkuk</option>
+            <option>Al-Muthana</option>
+            <option>Najaf</option>
+            <option>Ninawa</option>
+            <option>Wasit</option>
+            <option>Sulaymaniyah</option>
+            <option>Maysan</option>
+            <option>Salah ad Din</option>
+        </select>                   
     </div>
-</div>
-                 
+    
+    <div class="form-group"> <!--Description-->
+        <label for="zip_id" class="control-label">Description</label>
+        <textarea class="form-control" name="description" rows="8" cols="100" placeholder="Enter The Description Here ...."></textarea>
+    </div>      
+    
+    <div class="form-group"> <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Create Job</button>
+    </div>     
+    
+    </form>
+        
+        @endforeach
+      </div>
+   </div>
+</div> 
+
 
 @endsection
 

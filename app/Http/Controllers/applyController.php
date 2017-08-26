@@ -55,10 +55,13 @@ class applyController extends Controller
 
                $apply->save();
 
-               return view('welcome');
+
+               $msg = "YOUR Apply Is Done !!";
+               return response()->json(array('msg'=> $msg), 200);
             }else{
 
-               echo "this job has been applied" ;
+               $msg = "This job has been applied" ;
+               return response()->json(array('msg'=> $msg), 200);
             }
 
             

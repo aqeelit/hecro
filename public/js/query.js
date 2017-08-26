@@ -1,35 +1,18 @@
 
 
-// $('#search').keyup(function(){
 
-// $.ajax({
-//    url: '/getcity',
-//    data: {
-//       format: 'json'
-//    },
-//    error: function() {
-//       $('#update').html('<p>An error has occurred</p>');
-//    },
-//    dataType: 'jsonp',
-//    success: function(data) {
-//       var $name = $('<h1>').text(data.talks[0].name);
-//       $('#update')
-//          .append($name)
-//    },
-//    type: 'GET'
-// });
-// });
+var user_id = $('#field1').data("field1-id");
+
+var job_id = $('#field2').data("field2-id");
 
 
+function getApply(){
 
-
-
-
-// function search_data(search_value) {
-//     $.ajax({
-//         url: '/getcity/' + search_value,
-//         method: 'POST'
-//     }).done(function(response){
-//         $('#results').html(response); // put the returning html in the 'results' div
-//     });
-// }
+	$.ajax({
+		type:'GET',
+		url : '/job/'+ user_id +'/apply/'+ job_id,
+		success:function(data){
+                  $("#msg").html(data.msg);
+               }
+            });
+}
